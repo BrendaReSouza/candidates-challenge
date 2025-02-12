@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "My Extension",
+  "version": "1.0",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "host_permissions": [
+    "http://localhost:3000"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "path/to/resource/file1.js",
+        "path/to/resource/style.css",
+        "path/to/resource/*.png"
+      ],
+      "matches": [
+        "http://localhost:3000"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}
