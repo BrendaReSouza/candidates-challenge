@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
-import { ChangeDetectorRef } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import { CandidateService } from '../../services/candidate.service';
+import { ChangeDetectorRef } from '@angular/core';
 import { CandidateTableComponent } from '../candidate-table/candidate-table.component';
 
 describe('CandidateTableComponent', () => {
@@ -11,14 +11,12 @@ describe('CandidateTableComponent', () => {
   let fixture: ComponentFixture<CandidateTableComponent>;
   let candidateService: CandidateService;
 
-  beforeEach(async () => {
+  beforeEach(async () => {    
     const candidateServiceMock = {
       getCandidates: jest.fn(),
     };
-
     await TestBed.configureTestingModule({
-      declarations: [CandidateTableComponent],
-      imports: [MatTableModule, MatCardModule],
+      imports: [MatTableModule, MatCardModule, HttpClientModule, CandidateTableComponent],
       providers: [
         { provide: CandidateService, useValue: candidateServiceMock },
         ChangeDetectorRef,

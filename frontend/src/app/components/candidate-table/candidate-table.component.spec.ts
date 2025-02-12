@@ -12,7 +12,7 @@ describe('CandidateTableComponent', () => {
 
   beforeEach(async () => {
     const candidateServiceMock = {
-      getCandidates: jasmine.createSpy('getCandidates'),
+      getCandidates: jest.fn(),
     };
 
     await TestBed.configureTestingModule({

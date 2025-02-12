@@ -2,8 +2,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
-    "types": ["jest", "node"]
+    "types": ["jest"],
+    "lib": ["ES2015", "DOM"]
   },
-  "files": ["src/setup-jest.ts"],
+  "files": ["src/test.ts", "src/setup-jest.ts"],
   "include": ["src/**/*.spec.ts", "src/**/*.d.ts"]
 }
