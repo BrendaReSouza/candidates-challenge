@@ -1,0 +1,31 @@
+<mat-card>
+  <mat-table [dataSource]="candidates" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let candidate"> {{candidate.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="surname">
+      <mat-header-cell *matHeaderCellDef> Surname </mat-header-cell>
+      <mat-cell *matCellDef="let candidate"> {{candidate.surname}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="seniority">
+      <mat-header-cell *matHeaderCellDef> Seniority </mat-header-cell>
+      <mat-cell *matCellDef="let candidate"> {{candidate.seniority}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="yearsOfExperience">
+      <mat-header-cell *matHeaderCellDef> Years of Experience </mat-header-cell>
+      <mat-cell *matCellDef="let candidate"> {{candidate.yearsOfExperience}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="availability">
+      <mat-header-cell *matHeaderCellDef> Availability </mat-header-cell>
+      <mat-cell *matCellDef="let candidate"> {{candidate.availability}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</mat-card>

@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CandidateFormComponent } from './components/candidate-form/candidate-form.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,  // Torna o componente standalone
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
+  imports: [CandidateFormComponent]
 })
 export class AppComponent {
-  title = 'frontend';
+  constructor(private http: HttpClient) {}
 }

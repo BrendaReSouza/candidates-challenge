@@ -1,0 +1,57 @@
+<div class="form-container">
+  <form [formGroup]="candidateForm" (ngSubmit)="submitForm()">
+    <mat-form-field class="full-width" *ngIf="candidateForm.controls['name']">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required>
+      <mat-error *ngIf="candidateForm.controls['name'].invalid && (candidateForm.controls['name'].dirty || candidateForm.controls['name'].touched)">
+        Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" *ngIf="candidateForm.controls['surname']">
+      <mat-label>Surname</mat-label>
+      <input matInput formControlName="surname" required>
+      <mat-error *ngIf="candidateForm.controls['surname'].invalid && (candidateForm.controls['surname'].dirty || candidateForm.controls['surname'].touched)">
+        Surname is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" *ngIf="candidateForm.controls['seniority']">
+      <mat-label>Seniority</mat-label>
+      <mat-select formControlName="seniority" required>
+        <mat-option value="junior">Junior</mat-option>
+        <mat-option value="senior">Senior</mat-option>
+      </mat-select>
+      <mat-error *ngIf="candidateForm.controls['seniority'].invalid && (candidateForm.controls['seniority'].dirty || candidateForm.controls['seniority'].touched)">
+        Seniority is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" *ngIf="candidateForm.controls['yearsOfExperience']">
+      <mat-label>Years of Experience</mat-label>
+      <input matInput type="number" formControlName="yearsOfExperience" required>
+      <mat-error *ngIf="candidateForm.controls['yearsOfExperience'].invalid && (candidateForm.controls['yearsOfExperience'].dirty || candidateForm.controls['yearsOfExperience'].touched)">
+        Years of Experience is required
+      </mat-error>
+      <mat-error *ngIf="candidateForm.controls['yearsOfExperience'].hasError('min')">
+        Years of Experience must be a positive number
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width clickable">
+      <mat-label>
+        Select file
+        <mat-icon aria-hidden="false" aria-label="upload file" fontIcon="attach_file"></mat-icon>
+      </mat-label>
+      <input matInput required readonly type="text" id="fakeFileInput" (click)="hiddenInput.click()" placeholder="Seniority, Years of Experience and Availability">
+      <input hidden id="file" type="file" accept=".csv, .xlsx, .xls" #hiddenInput (change)="getFileOnLoad($event)">
+      <mat-error *ngIf="!selectedFile">File is required</mat-error>
+    </mat-form-field>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+
+<app-candidate-table [candidates]="candidates"></app-candidate-table>
