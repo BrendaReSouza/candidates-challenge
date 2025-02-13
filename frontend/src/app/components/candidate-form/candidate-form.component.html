@@ -38,12 +38,12 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="full-width clickable">
+    <mat-form-field class="full-width pointer">
       <mat-label>
         Select file
         <mat-icon aria-hidden="false" aria-label="upload file" fontIcon="attach_file"></mat-icon>
       </mat-label>
-      <input matInput required readonly type="text" id="fakeFileInput" (click)="hiddenInput.click()" placeholder="Seniority, Years of Experience and Availability">
+      <input matInput required readonly class="pointer" type="text" id="fakeFileInput" (click)="hiddenInput.click()" placeholder="Seniority, Years of Experience and Availability">
       <input hidden id="file" type="file" accept=".csv, .xlsx, .xls" #hiddenInput (change)="getFileOnLoad($event)">
       <mat-error *ngIf="!selectedFile">File is required</mat-error>
     </mat-form-field>

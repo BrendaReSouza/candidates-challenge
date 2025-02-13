@@ -4,7 +4,6 @@ import { MatCardModule } from '@angular/material/card';
 import { CandidateTableComponent } from './candidate-table.component';
 import { CandidateService } from '../../services/candidate.service';
 import { ChangeDetectorRef } from '@angular/core';
-import * as jest from 'jest-mock';
 
 describe('CandidateTableComponent', () => {
   let component: CandidateTableComponent;
@@ -17,8 +16,7 @@ describe('CandidateTableComponent', () => {
     };
 
     await TestBed.configureTestingModule({
-      declarations: [CandidateTableComponent],
-      imports: [MatTableModule, MatCardModule],
+      imports: [MatTableModule, MatCardModule, CandidateTableComponent],
       providers: [
         { provide: CandidateService, useValue: candidateServiceMock },
         ChangeDetectorRef,
